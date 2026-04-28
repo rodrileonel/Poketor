@@ -12,30 +12,24 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import kotlin.time.Duration.Companion.nanoseconds
 
 @Composable
 fun SetsScreen(
     setsState: SetsState,
 ) {
     Scaffold(modifier = Modifier.fillMaxSize()) { inner ->
-
         Box(
             contentAlignment = Alignment.Center,
             modifier = Modifier.padding(inner)
         ){
-
-        }
-        when(setsState){
-            is SetsState.Idle -> CircularProgressIndicator()
-            is SetsState.Loading -> CircularProgressIndicator()
-            is SetsState.Error -> Text("Error")
-            is SetsState.Success -> LazyColumn {
-                items(setsState.sets) { set->
-                    Text(
-                        modifier = Modifier.clickable(enabled = true){},
-                        text = set.name
-                    )
+            when(setsState){
+                is SetsState.Idle -> CircularProgressIndicator()
+                is SetsState.Loading -> CircularProgressIndicator()
+                is SetsState.Error -> Text("Error")
+                is SetsState.Success -> LazyColumn {
+                    items(setsState.sets) { set->
+                        SetScreen(set)
+                    }
                 }
             }
         }

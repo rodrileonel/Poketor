@@ -24,4 +24,4 @@ dependencyResolutionManagement {
 
 rootProject.name = "Poketor"
 include(":app")
- 
+include(":core:fixtures")

@@ -1,6 +1,6 @@
 package com.rodrigo.poketor.data
 
-import com.rodrigo.poketor.data.dto.SetsListDto
+import com.rodrigo.poketor.core.fixtures.dto.SetsListDto
 import retrofit2.http.GET
 import retrofit2.http.Query
 

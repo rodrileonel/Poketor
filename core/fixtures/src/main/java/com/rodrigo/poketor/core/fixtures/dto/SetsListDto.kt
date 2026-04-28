@@ -1,4 +1,4 @@
-package com.rodrigo.poketor.data.dto
+package com.rodrigo.poketor.core.fixtures.dto
 
 data class SetsListDto (
     val data: List<SetDto>,

@@ -1,4 +1,7 @@
 [versions]
+android-compileSdk = "36"
+android-minSdk = "24"
+android-targetSdk = "36"
 agp = "9.1.1"
 coreKtx = "1.18.0"
 junit = "4.13.2"
@@ -20,6 +23,9 @@ arch-core = "2.2.0"
 compose-ui-test = "1.6.7"
 uiTestJunit4 = "1.10.6"
 coil = "2.6.0"
+espressoCore = "3.7.0"
+appcompat = "1.6.1"
+material = "1.10.0"
 
 
 [libraries]
@@ -51,6 +57,9 @@ mockk-android = { module = "io.mockk:mockk-android", version.ref = "mockk" }
 arch-core-testing = { module = "androidx.arch.core:core-testing", version.ref = "arch-core" }
 androidx-ui-test-junit4 = { group = "androidx.compose.ui", name = "ui-test-junit4", version.ref = "uiTestJunit4" }
 androidx-navigation-testing = { group = "androidx.navigation", name = "navigation-testing", version.ref = "navigationCompose" }
+androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
+androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
+material = { group = "com.google.android.material", name = "material", version.ref = "material" }
 
 
 [plugins]
@@ -58,3 +67,4 @@ android-application = { id = "com.android.application", version.ref = "agp" }
 kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
 googleDevtoolsKsp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
 hilt = { id = "com.google.dagger.hilt.android", version.ref = "hilt" }
+android-library = { id = "com.android.library", version.ref = "agp" }

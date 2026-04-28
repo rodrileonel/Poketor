@@ -5,8 +5,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.rodrigo.poketor.data.dto.SetDto
-import com.rodrigo.poketor.data.dto.SetsListDto
+import com.rodrigo.poketor.core.fixtures.dto.SetDto
 import com.rodrigo.poketor.usecases.GetSetsUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch

@@ -10,12 +10,12 @@ plugins {
 
 android {
     namespace = "com.rodrigo.poketor"
-    compileSdk = 36
+    compileSdk = libs.versions.android.compileSdk.get().toInt()
 
     defaultConfig {
         applicationId = "com.rodrigo.poketor"
-        minSdk = 24
-        targetSdk = 36
+        minSdk = libs.versions.android.minSdk.get().toInt()
+        targetSdk = libs.versions.android.compileSdk.get().toInt()
         versionCode = 1
         versionName = "1.0"
 
@@ -38,6 +38,13 @@ android {
     buildFeatures {
         compose = true
     }
+    packaging {
+        resources {
+            excludes += "/META-INF/LICENSE.md"
+            excludes += "/META-INF/LICENSE-notice.md"
+            excludes += "/META-INF/junit-jupiter-api.kotlin_module"
+        }
+    }
 }
 
 kotlin {
@@ -47,6 +54,7 @@ kotlin {
 }
 
 dependencies {
+    implementation(project(":core:fixtures"))
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)
@@ -64,16 +72,19 @@ dependencies {
     implementation(libs.retrofit.gson)
     implementation(libs.coil)
 
+    testImplementation(project(":core:fixtures"))
     testImplementation(libs.junit)
     testImplementation(libs.coroutines.test)
     testImplementation(libs.mockk)
     testImplementation(libs.arch.core.testing)
+    androidTestImplementation(project(":core:fixtures"))
     androidTestImplementation(libs.androidx.ui.test.junit4)
     androidTestImplementation(libs.mockk.android)
     androidTestImplementation(platform(libs.androidx.compose.bom))
     androidTestImplementation(libs.androidx.navigation.testing)
     androidTestImplementation(libs.androidx.compose.ui.test.junit4)
 
+    debugImplementation(project(":core:fixtures"))
     debugImplementation(libs.androidx.compose.ui.tooling)
     debugImplementation(libs.androidx.compose.ui.test.manifest)
 
