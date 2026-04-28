@@ -1,16 +1,13 @@
 package com.rodrigo.poketor.app.sets
 
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
-import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
@@ -22,6 +19,7 @@ import androidx.compose.ui.unit.dp
 @Composable
 fun SetsScreen(
     setsState: SetsState,
+    onNavigateToCards:(String) -> Unit
 ) {
     Scaffold(modifier = Modifier.fillMaxSize()) { inner ->
         Box(
@@ -40,7 +38,10 @@ fun SetsScreen(
                         verticalArrangement = Arrangement.spacedBy(8.dp),
                     ) {
                         items(setsState.sets) { set->
-                            SetItem(set)
+                            SetItem(
+                                set,
+                                onClick = onNavigateToCards,
+                            )
                         }
                     }
             }
