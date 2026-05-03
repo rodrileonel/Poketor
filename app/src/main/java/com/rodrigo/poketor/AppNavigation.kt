@@ -7,6 +7,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.rodrigo.poketor.app.cards.CardsScreen
+import com.rodrigo.poketor.app.cards.CardsViewModel
 import com.rodrigo.poketor.app.sets.SetsScreen
 import com.rodrigo.poketor.app.sets.SetsViewModel
 
@@ -25,12 +26,12 @@ fun AppNavHost(navController: NavHostController) {
             )
         }
         composable(Screen.Cards.route) { backStackEntry ->
-            val from = backStackEntry.arguments?.getString("from") ?: ""
-            val filter = backStackEntry.arguments?.getString("filter") ?: ""
-            //TODO send 'from' and 'filter' to viewmodel
+            //val from = backStackEntry.arguments?.getString("from") ?: ""
+            //val filter = backStackEntry.arguments?.getString("filter") ?: ""
+            val vm: CardsViewModel = hiltViewModel()
             CardsScreen(
+                vm.cardsState,
                 onBack = {navController.popBackStack()},
-                text = "coming from $from and filtering using $filter"
             )
         }
     }

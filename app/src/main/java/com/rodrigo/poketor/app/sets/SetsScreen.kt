@@ -24,7 +24,7 @@ fun SetsScreen(
     Scaffold(modifier = Modifier.fillMaxSize()) { inner ->
         Box(
             contentAlignment = Alignment.Center,
-            modifier = Modifier.padding(inner)
+            modifier = Modifier.fillMaxSize().padding(inner)
         ){
             when(setsState){
                 is SetsState.Idle -> CircularProgressIndicator()

@@ -15,6 +15,6 @@ interface PoketorApi {
     @GET("cards")
     suspend fun getCards(
         @Query("q") filter:String,
-        @Query("select") select:String = ApiConstants.CARDS_SELECT,
+        @Query("select") select:String = ApiConstants.CARDS_SELECT
     ): CardsListDto
 }
