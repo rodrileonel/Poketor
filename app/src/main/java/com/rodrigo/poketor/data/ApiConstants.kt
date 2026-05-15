@@ -4,4 +4,6 @@ object ApiConstants {
     const val SETS_SELECT = "id,name,series,releaseDate,images"
     const val SETS_ORDER = "-releaseDate,series"
     const val CARDS_SELECT = "id,name,set,number,rarity,images,tcgplayer"
+    const val PAGE_SIZE = 250
+    const val PAGE = 2
 }

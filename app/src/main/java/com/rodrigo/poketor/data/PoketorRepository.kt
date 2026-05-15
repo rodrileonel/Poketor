@@ -6,7 +6,7 @@ import javax.inject.Inject
 
 interface PoketorRepository {
     suspend fun getSets(): Result<SetsListDto>
-    suspend fun getCards(filter:String): Result<CardsListDto>
+    suspend fun getCards(filter:String, page:Int= ApiConstants.PAGE, pageSize:Int= ApiConstants.PAGE_SIZE): Result<CardsListDto>
 }
 
 class PoketorRepositoryImpl @Inject constructor(
@@ -21,9 +21,9 @@ class PoketorRepositoryImpl @Inject constructor(
         }
     }
 
-    override suspend fun getCards(filter: String): Result<CardsListDto> {
+    override suspend fun getCards(filter: String,page:Int,pageSize:Int): Result<CardsListDto> {
         return try {
-            val response = api.getCards(filter)
+            val response = api.getCards(filter,page,pageSize)
             Result.success(response)
         }catch (e: Exception){
             Result.failure(e)
