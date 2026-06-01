@@ -19,14 +19,15 @@ import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.mutableStateSetOf
-import androidx.compose.runtime.saveable.rememberSaveable
-import androidx.compose.ui.Alignment
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.unit.dp
-import androidx.compose.runtime.setValue
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.testTag
+import androidx.compose.ui.unit.dp
+import com.rodrigo.poketor.utils.PokemonTestTags
 
 @Composable
 fun CardsScreen(
@@ -42,9 +43,12 @@ fun CardsScreen(
         ) {
             var searchCardText by rememberSaveable { mutableStateOf("") }
             when (cardsState) {
-                is CardsState.Idle -> CircularProgressIndicator()
-                is CardsState.Loading -> CircularProgressIndicator()
-                is CardsState.Error -> Text("Error")
+                is CardsState.Idle -> CircularProgressIndicator(modifier = Modifier.testTag(
+                    PokemonTestTags.CARD_IDLE))
+                is CardsState.Loading -> CircularProgressIndicator(modifier = Modifier.testTag(
+                    PokemonTestTags.CARD_LOADING))
+                is CardsState.Error -> Text("Error", modifier = Modifier.testTag(
+                    PokemonTestTags.CARD_ERROR))
                 is CardsState.Success -> {
                     val filteredCards = cardsState.cards.filter { card ->
                         card.name.contains(searchCardText, ignoreCase = true)

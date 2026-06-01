@@ -26,7 +26,9 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.unit.dp
+import com.rodrigo.poketor.utils.PokemonTestTags
 
 @Composable
 fun SetsScreen(
@@ -40,9 +42,9 @@ fun SetsScreen(
         ){
             var searchSetText by rememberSaveable { mutableStateOf("") }
             when(setsState){
-                is SetsState.Idle -> CircularProgressIndicator()
-                is SetsState.Loading -> CircularProgressIndicator()
-                is SetsState.Error -> Text("Error")
+                is SetsState.Idle -> CircularProgressIndicator(modifier = Modifier.testTag(PokemonTestTags.SET_IDLE))
+                is SetsState.Loading -> CircularProgressIndicator(modifier = Modifier.testTag(PokemonTestTags.SET_LOADING))
+                is SetsState.Error -> Text("Error", modifier = Modifier.testTag(PokemonTestTags.SET_ERROR))
                 is SetsState.Success -> {
                     val filteredSets = setsState.sets.filter { set ->
                         set.name.contains(searchSetText, ignoreCase = true) ||

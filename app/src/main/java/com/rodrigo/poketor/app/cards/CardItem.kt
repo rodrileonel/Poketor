@@ -10,11 +10,13 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
 import com.rodrigo.poketor.R
 import com.rodrigo.poketor.core.fixtures.dto.CardDto
+import com.rodrigo.poketor.utils.PokemonTestTags
 
 @Composable
 fun CardItem (
@@ -23,6 +25,7 @@ fun CardItem (
     Card(
         modifier = Modifier
             .fillMaxWidth()
+            .testTag(PokemonTestTags.CARD_ITEM)
             //.aspectRatio(0.5f)
     ) {
         Box(

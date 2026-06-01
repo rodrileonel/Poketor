@@ -10,11 +10,13 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
 import com.rodrigo.poketor.R
 import com.rodrigo.poketor.core.fixtures.dto.SetDto
+import com.rodrigo.poketor.utils.PokemonTestTags
 
 @Composable
 fun SetItem (
@@ -25,7 +27,8 @@ fun SetItem (
         onClick = { onClick(set.id) },
         modifier = Modifier
             .fillMaxWidth()
-            .aspectRatio(1.5f),
+            .aspectRatio(1.5f)
+            .testTag(PokemonTestTags.SET_ITEM),
     ) {
         Box(
             modifier = Modifier

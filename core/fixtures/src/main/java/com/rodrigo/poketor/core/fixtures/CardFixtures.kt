@@ -10,7 +10,7 @@ import com.rodrigo.poketor.core.fixtures.dto.TCGPlayerPricesDto
 import com.rodrigo.poketor.core.fixtures.dto.TCGPlayerPricesHolofoilDto
 
 object CardFixtures {
-    fun pinsir() = CardsListDto(
+    fun cardList() = CardsListDto(
         data = listOf(
             CardDto(
                 id = "sv8pt5-3",
