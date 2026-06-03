@@ -23,6 +23,7 @@ import com.rodrigo.poketor.app.cards.dialogs.CardDetailDialog
 import com.rodrigo.poketor.core.fixtures.dto.CardDto
 import com.rodrigo.poketor.utils.PokemonTestTags
 import kotlinx.coroutines.delay
+import kotlinx.coroutines.yield
 
 @Composable
 fun CardItem (
@@ -63,7 +64,8 @@ fun CardItem (
         ) {
             LaunchedEffect(Unit) {
                 showDialogAnimation = false
-                delay(16) // ~1 frame (60fps)
+                // delay(16) // ~1 frame (60fps)
+                yield()
                 showDialogAnimation = true
             }
 
@@ -76,7 +78,7 @@ fun CardItem (
 
             LaunchedEffect(showDialogAnimation) {
                 if (!showDialogAnimation) {
-                    delay(500) // igual que tu exit animation
+                    delay(500)
                     showDialog = false
                 }
             }
