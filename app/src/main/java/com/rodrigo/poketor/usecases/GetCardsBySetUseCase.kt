@@ -25,7 +25,7 @@ class GetCardsBySetUseCase @Inject constructor (private val repo: PoketorReposit
         }
 
         return Result.success(
-            allCards.sortedBy {
+            allCards.sortedByDescending {
                 it.number.toIntOrNull() ?: Int.MAX_VALUE
             }
         )
